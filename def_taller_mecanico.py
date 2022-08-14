@@ -17,11 +17,12 @@ def reparacion_del_veiculo():
 def repuestos_y_objetos():
       print("llegamos a la zona de ventas\n"
             "¿que quieres hacer?")
-      return "1.buscar productos" \
-             "2.agragar productos y sacarlos del mercado" \
-             "3.rellenar el stokc de los productos" \
-             "4.reventa de productos" \
-             "5.cambiar el precio de un producto"
+      return "1.buscar productos\n" \
+             "2.agragar productos y sacarlos del mercado\n" \
+             "3.rellenar el stokc de los productos\n" \
+             "4.reventa de productos\n" \
+             "5.cambiar el precio de un producto\n" \
+             "6.buscar informacion en la web"
 def servis():
       print("llegamos a la zona del servis\n"
             "¿que quieres hacer?")
@@ -43,3 +44,19 @@ def chequeo_de_autos_antes_de_la_entrega():
 def mostrar_lista_de_veiculos():
       print("veiculos")
       return "---------------"
+
+
+def ord_alf(cadena):
+    alfabeto = {
+        "a": 1, "b": 2, "c": 3, "d": 4, "e": 5, "f": 6, "g": 7,
+        "h": 8, "i": 9, "j": 10, "k": 11, "l": 12, "m": 13,
+        "n": 14, "ñ": 15, "o": 16, "p": 17, "q": 18, "r": 19,
+        "s": 20, "t": 21, "u": 22, "v": 23, "w": 24, "x": 25,
+        "y": 26, "z": 27,
+    }
+    codigos = []
+    for letra in cadena:
+        codigos.append(alfabeto[letra])
+    return codigos
+
+
