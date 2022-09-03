@@ -1,5 +1,8 @@
 def taller_mecanico():
     import webbrowser as web  # utilizar un sitio web
+    from time import sleep
+    from tqdm import tqdm
+    from colorama import Fore
     from def_taller_mecanico import menu_principal
     from def_taller_mecanico import reparacion_del_veiculo
     from def_taller_mecanico import repuestos_y_objetos
@@ -11,6 +14,7 @@ def taller_mecanico():
 
     # variavles de eleccion 2 venta
     productos = [("motor", 4000, 30), ("electro", 14, 20), ("bateria", 20, 40), ("rueda", 666, 50)]
+    heramientas = ["caja de heramientas", 10, 10]
     # variavles de eleccion 3 stock y 1
     empleados2 = []
     trabajo_2 = []
@@ -29,8 +33,8 @@ def taller_mecanico():
     ganancia_por_min = 0.1
     # variabels de la eleccion 5
     autos_en_estacionamiento = []
-    autos_en_taller = ["AA111BA", "BB123AA"]
-    autos_en_servis = []
+    autos_en_taller = ["AA111BA"]
+    autos_en_servis = ["BB123AA"]
     espacio_de_estacionamiento = 10
     espacio_de_taller = 3
     espacio_de_servis = 5
@@ -46,227 +50,74 @@ def taller_mecanico():
 
         if eleccion_1 == 1:
             while True:
+
                 print(reparacion_del_veiculo())
                 eleccion_1_1 = int(input(">>>"))
                 print(autos_en_taller)
-                auto_para_arreglo = input("seleccionar el auto")
+                auto_para_arreglo = input("seleccionar el auto\n"
+                                          ">>>")
                 if auto_para_arreglo in autos_en_taller:
                     pass
                 else:
                     eleccion_1_1 = -1
                 if eleccion_1_1 == 1:
-                    contador = 0
-                    contador_2 = len(productos)
-                    while contador_2 > 0:
-                        if "motor" in productos[contador]:
-                            para_pago = contador
-                            objeto = True
-                        else:
-                            pass
-                        contador += 1
-                        contador_2 -= 1
-                    if objeto:
-                        print("veamos quien esta disponible para hacer el recambio")
-                        if "motor" in trabajo:
-                            busqueda_de_trabajador = trabajo.index("motor")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_taller.index(auto_para_arreglo)
-                            autos_trabajados += [auto_para_arreglo]
-                            del autos_en_taller[auto]
-
-                        else:
-                            print("no hay nadie que pueda realizar el trabajo")
-
-                    else:
-                        print("el objeto motor no se encuentra en la cadana o en stock\n"
-                              "nos es imposible hacer el recambio ahora")
+                    objeto_2 = "motor"
                 elif eleccion_1_1 == 2:
-                    contador = 0
-                    contador_2 = len(productos)
-                    while contador_2 > 0:
-                        if "bateria" in productos[contador]:
-                            para_pago = contador
-                            objeto = True
-                        else:
-                            pass
-                        contador += 1
-                        contador_2 -= 1
-                    if objeto:
-                        print("veamos quien esta disponible para hacer el recambio")
-                        if "bateria" in trabajo:
-                            busqueda_de_trabajador = trabajo.index("bateria")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_taller.index(auto_para_arreglo)
-                            autos_trabajados += [auto_para_arreglo]
-                            del autos_en_taller[auto]
-                        else:
-                            print("no hay nadie que pueda realizar el trabajo")
-
-                    else:
-                        print("el objeto bateria no se encuentra en la cadana o en stock\n"
-                              "nos es imposible hacer el recambio ahora")
+                    objeto_2 = "bateria"
                 elif eleccion_1_1 == 3:
-                    contador = 0
-                    contador_2 = len(productos)
-                    while contador_2 > 0:
-                        if "electro" in productos[contador]:
-                            para_pago = contador
-                            objeto = True
-                        else:
-                            pass
-                        contador += 1
-                        contador_2 -= 1
-                    if objeto:
-                        print("veamos quien esta disponible para hacer el recambio")
-                        if "electro" in trabajo:
-                            busqueda_de_trabajador = trabajo.index("electro")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_taller.index(auto_para_arreglo)
-                            autos_trabajados += [auto_para_arreglo]
-                            del autos_en_taller[auto]
-                        else:
-                            print("no hay nadie que pueda realizar el trabajo")
-
-                    else:
-                        print("el objeto electro no se encuentra en la cadana o en stock\n"
-                              "nos es imposible hacer el recambio ahora")
+                    objeto_2 = "electro"
                 elif eleccion_1_1 == 4:
-                    contador = 0
-                    contador_2 = len(productos)
-                    while contador_2 > 0:
-                        if "filtro" in productos[contador]:
-                            para_pago = contador
-                            objeto = True
-                        else:
-                            pass
-                        contador += 1
-                        contador_2 -= 1
-                    if not objeto:
-                        print("el objeto filtro no se encuentra en la cadana o en stock\n"
-                              "nos es imposible hacer el recambio ahora")
-
-                    else:
-                        print("veamos quien esta disponible para hacer el recambio")
-                        if "filtro" in trabajo:
-                            busqueda_de_trabajador = trabajo.index("filtro")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_taller.index(auto_para_arreglo)
-                            autos_trabajados += [auto_para_arreglo]
-                            del autos_en_taller[auto]
-                        else:
-                            print("no hay nadie que pueda realizar el trabajo")
+                    objeto_2 = "filtro"
                 elif eleccion_1_1 == 5:
-                    contador = 0
-                    contador_2 = len(productos)
-                    while contador_2 > 0:
-                        if "radiador" in productos[contador]:
-                            para_pago = contador
-                            objeto = True
-                        else:
-                            pass
-                        contador += 1
-                        contador_2 -= 1
-                    if objeto:
-                        print("veamos quien esta disponible para hacer el recambio")
-                        if "radiador" in trabajo:
-                            busqueda_de_trabajador = trabajo.index("radiador")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_taller.index(auto_para_arreglo)
-                            autos_trabajados += [auto_para_arreglo]
-                            del autos_en_taller[auto]
-                        else:
-                            print("no hay nadie que pueda realizar el trabajo")
-
-                    else:
-                        print("el objeto radiador no se encuentra en la cadana o en stock\n"
-                              "nos es imposible hacer el recambio ahora")
+                    objeto_2 = "radiador"
                 elif eleccion_1_1 == -1:
                     print("auto no esncontrado")
+
+                if eleccion_1_1 != -1:
+                    contador = 0
+                    contador_2 = len(productos)
+                    while contador_2 > 0:
+                        if objeto_2 in productos[contador]:
+                            para_pago = contador
+                            objeto = True
+                        else:
+                            pass
+                        contador += 1
+                        contador_2 -= 1
+                    if objeto:
+                        print("veamos quien esta disponible para hacer el recambio")
+                        if objeto_2 in trabajo:
+                            busqueda_de_trabajador = trabajo.index("motor")
+                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
+                            print("el pago sera de", productos[para_pago][1], "dolares")
+                            productos_a_list = list(productos[para_pago])
+                            productos_a_list[2] -= 1
+                            list_a_prodocto = tuple(productos_a_list)
+                            productos[para_pago] = list_a_prodocto
+                            empleados2 += [empleados[busqueda_de_trabajador]]
+                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
+                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
+                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
+                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
+                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
+                            del empleados[busqueda_de_trabajador]
+                            del trabajo[busqueda_de_trabajador]
+                            del hora_de_entrada[busqueda_de_trabajador]
+                            del hora_de_salida[busqueda_de_trabajador]
+                            del min_de_entrada[busqueda_de_trabajador]
+                            del min_de_salida[busqueda_de_trabajador]
+                            auto = autos_en_taller.index(auto_para_arreglo)
+                            autos_trabajados += [auto_para_arreglo]
+                            del autos_en_taller[auto]
+                            heramientas[2] -= 1
+
+                        else:
+                            print("no hay nadie que pueda realizar el trabajo")
+
+                    else:
+                        print("el objeto", objeto_2, "no se encuentra en la cadana o en stock\n"
+                                                     "nos es imposible hacer el recambio ahora")
+
                 salida = input("algo mas (si/no)\n"
                                ">>>")
                 if salida == "si":
@@ -306,22 +157,27 @@ def taller_mecanico():
                         print("ordenado del precio - a +")
                         print(sorted(productos, key=lambda objetos: objetos[1]))
                 if eleccion_2_1 == 2:  # agragar productos y sacarlos del mercado
-                    A_o_S = input("queires agregar o sacar productos (a/s)")
+                    A_o_S = input("queires agregar o sacar productos (a/s)\n"
+                                  ">>>")
                     if A_o_S == "a":
-                        producto_nuevo = input("que producto nuevo sera")
-                        stock_nuevo = int(input("cual es el stonk del producto"))
+                        producto_nuevo = input("que producto nuevo sera\n"
+                                               ">>>")
+                        stock_nuevo = int(input("cual es el stonk del producto\n"
+                                                ">>>"))
                         if stock_nuevo < 0:
-                            print("secuencia imbalida")
+                            print("secuencia invalida")
                             break
-                        precio_nuevo = int(input("cual es el procio"))
+                        precio_nuevo = int(input("cual es el precio\n"
+                                                 ">>>"))
                         if precio_nuevo < 0:
-                            print("secuencia imbalida")
+                            print("secuencia invalida")
                             break
                         productos.append((producto_nuevo, stock_nuevo, precio_nuevo))
                         print(productos)
                     if A_o_S == "s":
                         print(productos)
-                        eliminar = int(input("decide que producto vas a eliminar definitivamente (seleccionar por nª)"))
+                        eliminar = int(input("decide que producto vas a eliminar definitivamente (seleccionar por nª)\n"
+                                             ">>>"))
                         del productos[eliminar - 1]
                         print(productos)
                 if eleccion_2_1 == 3:  # rellenar stock de un producto
@@ -331,7 +187,8 @@ def taller_mecanico():
                     while True:
                         stock_nuevo = int(input(">>>"))
                         cadena_de_stonk += [stock_nuevo - 1]
-                        algo_mas = input("algun otro producto mas (si/no)")
+                        algo_mas = input("algun otro producto mas (si/no)\n"
+                                         ">>>")
                         if algo_mas == "si":
                             pass
                         else:
@@ -350,12 +207,13 @@ def taller_mecanico():
                         contador += 1
                 if eleccion_2_1 == 4:  # reventa de productos
                     print("selecciona cual de los siguientes productos van en el encargo\n",
-                          productos)
+                          productos, "\n>>>")
                     cadena_de_stonk = []
                     while True:
                         stock_nuevo = int(input(">>>"))
                         cadena_de_stonk += [stock_nuevo - 1]
-                        algo_mas = input("algo mas (si/no)")
+                        algo_mas = input("algo mas (si/no)\n"
+                                         ">>>")
                         if algo_mas == "si":
                             pass
                         else:
@@ -364,7 +222,7 @@ def taller_mecanico():
                     contador = 0
                     while nuevo_stonk > 0:
                         print(productos[cadena_de_stonk[contador]][0],
-                              "cuantos productos van en el embio")
+                              "cuantos productos van en el envio")
                         stock_nuevo = int(input(">>>"))
                         if productos[cadena_de_stonk[contador]][2] > 0:
                             productos_a_list = list(productos[cadena_de_stonk[contador]])
@@ -387,12 +245,13 @@ def taller_mecanico():
                             contador += 1
                 if eleccion_2_1 == 5:
                     print("selecciona cual de los siguientes productos cambiaran su precio\n",
-                          productos)
+                          productos, "\n>>>")
                     cadena_de_precios = []
                     while True:
                         precio_nuevo = int(input(">>>"))
                         cadena_de_precios += [precio_nuevo - 1]
-                        algo_mas = input("algo mas (si/no)")
+                        algo_mas = input("algo mas (si/no)\n"
+                                         ">>>")
                         if algo_mas == "si":
                             pass
                         else:
@@ -413,6 +272,9 @@ def taller_mecanico():
                     web.open("https://blog.nhautopiezas.com.ar/2021/06/23/estamos-en-cordoba/?gclid"
                              "=Cj0KCQjwuuKXBhCRARIsAC-gM0jTWlqVcgOzjj6lFdY752vLCGgEI02OxBw"
                              "-bZcqx0db9mh9T_BrIkAaAsfvEALw_wcB")
+                if eleccion_2_1 == 7:
+                    print("el numero de cajas de heramientas es", heramientas[1],
+                          "y en uso estan", 10 - heramientas[2])
                 salida = input("algo mas (si/no)\n"
                                ">>>")
                 if salida == "si":
@@ -425,7 +287,8 @@ def taller_mecanico():
                 print(servis())
                 eleccion_3_1 = int(input(">>>"))
                 print(autos_en_servis)
-                auto_para_arreglo = input("seleccionar el auto")
+                auto_para_arreglo = input("seleccionar el auto\n"
+                                          ">>>")
                 if auto_para_arreglo in autos_en_servis:
                     pass
                 else:
@@ -440,202 +303,59 @@ def taller_mecanico():
                                          "5.reponer el espejo\n"
                                          ">>>"))
                     if chapista == 1:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "rueda" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para hacer el recambio")
-                            if "chapista" in trabajo:
-                                busqueda_de_trabajador = trabajo.index("chapista")
-                                print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                                print("el pago sera de", productos[para_pago][1])
-                                productos_a_list = list(productos[para_pago])
-                                productos_a_list[2] -= 1
-                                list_a_prodocto = tuple(productos_a_list)
-                                productos[para_pago] = list_a_prodocto
-                                empleados2 += [empleados[busqueda_de_trabajador]]
-                                trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                                hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                                hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                                min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                                min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                                del empleados[busqueda_de_trabajador]
-                                del trabajo[busqueda_de_trabajador]
-                                del hora_de_entrada[busqueda_de_trabajador]
-                                del hora_de_salida[busqueda_de_trabajador]
-                                del min_de_entrada[busqueda_de_trabajador]
-                                del min_de_salida[busqueda_de_trabajador]
-                                auto = autos_en_servis.index(auto_para_arreglo)
-                                autos_trabajados_servis += [auto_para_arreglo]
-                                del autos_en_servis[auto]
-                            else:
-                                print("no hay nadie que pueda realizar el trabajo")
+                        objeto_2 = "rueda"
+                    elif chapista == 2:
+                        objeto_2 = "paragolpes"
+                    elif chapista == 3:
+                        objeto_2 = "puerta"
+                    elif chapista == 4:
+                        objeto_2 = "vidrio"
+                    elif chapista == 5:
+                        objeto_2 = "espejo"
+
+                    contador = 0
+                    contador_2 = len(productos)
+                    while contador_2 > 0:
+                        if objeto_2 in productos[contador]:
+                            para_pago = contador
+                            objeto = True
+                        else:
+                            pass
+                        contador += 1
+                        contador_2 -= 1
+                    if objeto:
+                        print("veamos quien esta disponible para hacer el recambio")
+                        if "chapista" in trabajo:
+                            busqueda_de_trabajador = trabajo.index("chapista")
+                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
+                            print("el pago sera de", productos[para_pago][1], "dolares")
+                            productos_a_list = list(productos[para_pago])
+                            productos_a_list[2] -= 1
+                            list_a_prodocto = tuple(productos_a_list)
+                            productos[para_pago] = list_a_prodocto
+                            empleados2 += [empleados[busqueda_de_trabajador]]
+                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
+                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
+                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
+                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
+                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
+                            del empleados[busqueda_de_trabajador]
+                            del trabajo[busqueda_de_trabajador]
+                            del hora_de_entrada[busqueda_de_trabajador]
+                            del hora_de_salida[busqueda_de_trabajador]
+                            del min_de_entrada[busqueda_de_trabajador]
+                            del min_de_salida[busqueda_de_trabajador]
+                            auto = autos_en_servis.index(auto_para_arreglo)
+                            autos_trabajados_servis += [auto_para_arreglo]
+                            del autos_en_servis[auto]
+                            heramientas[2] -= 1
 
                         else:
-                            print("el objeto rueda no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
-                    elif chapista == 2:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "paragolpes" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para hacer el recambio")
-                            if "chapista" in trabajo:
-                                busqueda_de_trabajador = trabajo.index("chapista")
-                                print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                                print("el pago sera de", productos[para_pago][1])
-                                productos_a_list = list(productos[para_pago])
-                                productos_a_list[2] -= 1
-                                list_a_prodocto = tuple(productos_a_list)
-                                productos[para_pago] = list_a_prodocto
-                                empleados2 += [empleados[busqueda_de_trabajador]]
-                                trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                                hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                                hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                                min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                                min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                                del empleados[busqueda_de_trabajador]
-                                del trabajo[busqueda_de_trabajador]
-                                del hora_de_entrada[busqueda_de_trabajador]
-                                del hora_de_salida[busqueda_de_trabajador]
-                                del min_de_entrada[busqueda_de_trabajador]
-                                del min_de_salida[busqueda_de_trabajador]
-                                auto = autos_en_servis.index(auto_para_arreglo)
-                                autos_trabajados_servis += [auto_para_arreglo]
-                                del autos_en_servis[auto]
-                            else:
-                                print("no hay nadie que pueda realizar el trabajo")
-                        else:
-                            print("el objeto paragolpes no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
-                    elif chapista == 3:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "puerta" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para ahcer el recambio")
-                            busqueda_de_trabajador = trabajo.index("chapista")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_servis.index(auto_para_arreglo)
-                            autos_trabajados_servis += [auto_para_arreglo]
-                            del autos_en_servis[auto]
-                        else:
-                            print("el objeto puerta no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
-                    elif chapista == 4:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "vidrio" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para ahcer el recambio")
-                            busqueda_de_trabajador = trabajo.index("chapista")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_servis.index(auto_para_arreglo)
-                            autos_trabajados_servis += [auto_para_arreglo]
-                            del autos_en_servis[auto]
-                        else:
-                            print("el objeto vidrio no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
-                    elif chapista == 5:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "espejo" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para ahcer el recambio")
-                            busqueda_de_trabajador = trabajo.index("chapista")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_servis.index(auto_para_arreglo)
-                            autos_trabajados_servis += [auto_para_arreglo]
-                            del autos_en_servis[auto]
-                        else:
-                            print("el objeto espejo no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
+                            print("no hay nadie que pueda realizar el trabajo")
+
+                    else:
+                        print("el objeto", objeto_2, " no se encuentra en la cadana o en stock\n"
+                                                     "nos es imposible hacer el recambio ahora")
                     salida = input("algo mas (si/no)\n"
                                    ">>>")
                     if salida == "si":
@@ -644,25 +364,29 @@ def taller_mecanico():
                         break
                 elif eleccion_3_1 == 2:
                     objeto = False
-                    pintura = int(
-                        input("se necesita pintar el auto completo(1) o se necesita retocar la pintura del auto(2)"))
+                    pintura = int(input("se necesita pintar el auto completo(1) o se necesita retocar la pintura del "
+                                        "auto(2)\n "
+                                        ">>>"))
 
-                    if pintura == 1:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "pintura" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
+                    contador = 0
+                    contador_2 = len(productos)
+                    while contador_2 > 0:
+                        if "pintura" in productos[contador]:
+                            para_pago = contador
+                            objeto = True
+                        else:
+                            pass
+                        contador += 1
+                        contador_2 -= 1
+                    if objeto:
+                        if "pintura" in trabajo:
                             print("veamos quien esta disponible para ahcer el recambio")
                             busqueda_de_trabajador = trabajo.index("pintura")
                             print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
+                            if pintura == 1:
+                                print("el pago sera de", productos[para_pago][1], "dolares")
+                            elif pintura == 2:
+                                print("el pago sera de", productos[para_pago][1] / 2, "dolares")
                             productos_a_list = list(productos[para_pago])
                             productos_a_list[2] -= 1
                             list_a_prodocto = tuple(productos_a_list)
@@ -682,53 +406,20 @@ def taller_mecanico():
                             auto = autos_en_servis.index(auto_para_arreglo)
                             autos_trabajados_servis += [auto_para_arreglo]
                             del autos_en_servis[auto]
+                            heramientas[2] -= 1
+
                         else:
-                            print("el objeto pintura no esta disponible no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
-                    elif pintura == 2:
-                        contador = 0
-                        contador_2 = len(productos)
-                        while contador_2 > 0:
-                            if "pintura" in productos[contador]:
-                                para_pago = contador
-                                objeto = True
-                            else:
-                                pass
-                            contador += 1
-                            contador_2 -= 1
-                        if objeto:
-                            print("veamos quien esta disponible para ahcer el recambio")
-                            busqueda_de_trabajador = trabajo.index("pintura")
-                            print("tenemos disponibe a", empleados[busqueda_de_trabajador])
-                            print("el pago sera de", productos[para_pago][1])
-                            productos_a_list = list(productos[para_pago])
-                            productos_a_list[2] -= 1
-                            list_a_prodocto = tuple(productos_a_list)
-                            productos[para_pago] = list_a_prodocto
-                            empleados2 += [empleados[busqueda_de_trabajador]]
-                            trabajo_2 += [trabajo[busqueda_de_trabajador]]
-                            hora_de_entrada2 += [hora_de_entrada[busqueda_de_trabajador]]
-                            hora_de_salida2 += [hora_de_salida[busqueda_de_trabajador]]
-                            min_de_entrada2 += [min_de_entrada[busqueda_de_trabajador]]
-                            min_de_salida2 += [min_de_salida[busqueda_de_trabajador]]
-                            del empleados[busqueda_de_trabajador]
-                            del trabajo[busqueda_de_trabajador]
-                            del hora_de_entrada[busqueda_de_trabajador]
-                            del hora_de_salida[busqueda_de_trabajador]
-                            del min_de_entrada[busqueda_de_trabajador]
-                            del min_de_salida[busqueda_de_trabajador]
-                            auto = autos_en_servis.index(auto_para_arreglo)
-                            autos_trabajados_servis += [auto_para_arreglo]
-                            del autos_en_servis[auto]
-                        else:
-                            print("el objeto pintura no esta disponible no se encuentra en la cadana o en stock\n"
-                                  "nos es imposible hacer el recambio ahora")
+                            print("no hay nadie que pueda realizar el trabajo")
+                    else:
+                        print("el objeto pintura no esta disponible no se encuentra en la cadana o en stock\n"
+                              "nos es imposible hacer el recambio ahora")
                     salida = input("algo mas (si/no)\n"
                                    ">>>")
                     if salida == "si":
                         pass
                     else:
                         break
+
                 elif eleccion_3_1 == -1:
                     print("auto no esncontrado")
                     salida = input("algo mas (si/no)\n"
@@ -772,7 +463,7 @@ def taller_mecanico():
                         if hse < 4:
                             print("horario de trbajo no balido")
                         else:
-                            if hss > 18:
+                            if hss > 18 and mins > 0:
                                 print("horario de trabajo no baido")
                             else:
                                 empleados += [nombre]
@@ -857,7 +548,8 @@ def taller_mecanico():
                         print("no hay espacio")
                     else:
                         print(autos_en_estacionamiento)
-                        auto_nuevo = input("escribir patente del auto")
+                        auto_nuevo = input("escribir patente del auto\n"
+                                           ">>>")
                         if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller or auto_nuevo in \
                                 autos_en_servis:
                             print("el auto no puede registrase")
@@ -874,22 +566,25 @@ def taller_mecanico():
                 elif eleccion_5_1 == 2:
                     if espacio_de_taller == 0:
                         print("no hay espacio")
-                        s_n = input("quieres guardarlo en estacinonamiento (si/no)")
+                        s_n = input("quieres guardarlo en estacinonamiento (si/no)\n"
+                                    ">>>")
                         if s_n == "si":
                             if espacio_de_estacionamiento == 0:
                                 print("no hay espacio")
                             else:
                                 print(autos_en_estacionamiento)
-                                auto_nuevo = input("escribir patente del auto")
-                                if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller or auto_nuevo in \
-                                        autos_en_servis:
+                                auto_nuevo = input("escribir patente del auto\n"
+                                                   ">>>")
+                                if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller \
+                                        or auto_nuevo in autos_en_servis:
                                     print("el auto no puede registrase")
                                 else:
                                     autos_en_estacionamiento += [auto_nuevo]
                                     espacio_de_estacionamiento -= 1
                     else:
                         print(autos_en_taller)
-                        auto_nuevo = input("escribir patente del auto")
+                        auto_nuevo = input("escribir patente del auto\n"
+                                           ">>>")
                         if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller or auto_nuevo in \
                                 autos_en_servis:
                             print("el auto no puede registrase")
@@ -905,22 +600,25 @@ def taller_mecanico():
                 elif eleccion_5_1 == 3:
                     if espacio_de_servis == 0:
                         print("no hay espacio")
-                        s_n = input("quieres guardarlo en estacinonamiento (si/no)")
+                        s_n = input("quieres guardarlo en estacinonamiento (si/no)\n"
+                                    ">>>")
                         if s_n == "si":
                             if espacio_de_estacionamiento == 0:
                                 print("no hay espacio")
                             else:
                                 print(autos_en_estacionamiento)
-                                auto_nuevo = input("escribir patente del auto")
-                                if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller or auto_nuevo in \
-                                        autos_en_servis:
+                                auto_nuevo = input("escribir patente del auto\n"
+                                                   ">>>")
+                                if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller \
+                                        or auto_nuevo in autos_en_servis:
                                     print("el auto no puede registrase")
                                 else:
                                     autos_en_estacionamiento += [auto_nuevo]
                                     espacio_de_estacionamiento -= 1
                     else:
                         print(autos_en_servis)
-                        auto_nuevo = input("escribir patente del auto")
+                        auto_nuevo = input("escribir patente del auto\n"
+                                           ">>>")
                         if auto_nuevo in autos_en_estacionamiento or auto_nuevo in autos_en_taller or auto_nuevo in \
                                 autos_en_servis:
                             print("el auto no puede registrase")
@@ -938,7 +636,8 @@ def taller_mecanico():
                         print("no hay espacio")
                     else:
                         print(autos_en_estacionamiento)
-                        cambio = input("escribe el auto a mover")
+                        cambio = input("escribe el auto a mover\n"
+                                       ">>>")
                         if cambio in autos_en_estacionamiento:
                             autos_en_taller += [cambio]
                             espacio_de_taller -= 1
@@ -956,7 +655,8 @@ def taller_mecanico():
                         print("no hay espacio")
                     else:
                         print(autos_en_estacionamiento)
-                        cambio = input("escribe el auto a mover")
+                        cambio = input("escribe el auto a mover\n"
+                                       ">>>")
                         if cambio in autos_en_estacionamiento:
                             autos_en_servis += [cambio]
                             espacio_de_servis -= 1
@@ -977,7 +677,8 @@ def taller_mecanico():
 
                 if eleccion_6_1 == 1:
                     print(autos_trabajados)
-                    patente = input("selecciona el auto")
+                    patente = input("selecciona el auto\n"
+                                    ">>>")
                     if patente in autos_trabajados:
                         print("auto retirado con exito")
                         auto = autos_trabajados.index(patente)
@@ -995,6 +696,7 @@ def taller_mecanico():
                         del hora_de_salida2[auto]
                         del min_de_entrada2[auto]
                         del min_de_salida2[auto]
+                        heramientas[2] += 1
 
                     else:
                         print("auto no registrado")
@@ -1006,12 +708,26 @@ def taller_mecanico():
                         break
                 if eleccion_6_1 == 2:
                     print(autos_trabajados_servis)
-                    patente = input("selecciona el auto")
+                    patente = input("selecciona el auto\n"
+                                    ">>>")
                     if patente in autos_trabajados_servis:
                         print("auto retirado con exito")
                         auto = autos_trabajados_servis.index(patente)
                         espacio_de_servis += 1
                         del autos_trabajados_servis[auto]
+                        empleados += [empleados2[auto]]
+                        trabajo += [trabajo_2[auto]]
+                        hora_de_entrada += [hora_de_entrada2[auto]]
+                        hora_de_salida += [hora_de_salida2[auto]]
+                        min_de_entrada += [min_de_entrada2[auto]]
+                        min_de_salida += [min_de_salida2[auto]]
+                        del empleados2[auto]
+                        del trabajo_2[auto]
+                        del hora_de_entrada2[auto]
+                        del hora_de_salida2[auto]
+                        del min_de_entrada2[auto]
+                        del min_de_salida2[auto]
+                        heramientas[2] += 1
                     else:
                         print("auto no registrado")
                     salida = input("algo mas (si/no)\n"
@@ -1041,8 +757,10 @@ def taller_mecanico():
                     break
 
         elif eleccion_1 == 8:
-            print("entendido\n"
-                  "finalizando la secion")
+            print(Fore.RED + "entendido\n"
+                             "finalizando la secion")
+            for i in tqdm(range(10)):
+                sleep(1)
             break
 
         else:

@@ -1,20 +1,23 @@
+from colorama import Fore
+
+
 def menu_principal():
-    print("biembenido señor: \n"
-          "¿que va a hacer hoy? \n"
-          "✔1-reparacion del veiculo\n"
-          "✔2-repestos y objetos\n"
-          "✔3-servis\n"
-          "✔4-control de empleados\n"
-          "✔5-gestionar autos en espera\n"
-          "✔6-chequeo de los autos antes de la entrega\n"
-          "✔7-mostrar la lista de veiculos\n"
-          "✔8-salir del programa")
-    return "---------------"
+    print(Fore.WHITE + "biembenido señor: \n",
+          "¿que va a hacer hoy? \n",
+          Fore.YELLOW + "✔1-reparacion del veiculo\n",
+          Fore.MAGENTA + "✔2-repestos y objetos\n",
+          Fore.BLACK + "✔3-servis\n",
+          Fore.BLUE + "✔4-control de empleados\n",
+          Fore.GREEN + "✔5-gestionar autos en espera\n",
+          Fore.LIGHTBLUE_EX + "✔6-chequeo de los autos antes de la entrega\n",
+          Fore.LIGHTGREEN_EX + "✔7-mostrar la lista de veiculos\n",
+          Fore.RED + "✔8-salir del programa")
+    return Fore.WHITE + "---------------"
 
 
 def reparacion_del_veiculo():
-    print("llegamos a la zona de reparacion\n"
-          "¿que quieres hacer?")
+    print(Fore.YELLOW + "llegamos a la zona de reparacion\n"
+                        "¿que quieres hacer?")
     return "1.remplazar el motor\n" \
            "2.remplazar la bateria\n" \
            "3.remplazar el electro\n" \
@@ -23,26 +26,27 @@ def reparacion_del_veiculo():
 
 
 def repuestos_y_objetos():
-    print("llegamos a la zona de ventas\n"
-          "¿que quieres hacer?")
+    print(Fore.MAGENTA + "llegamos a la zona de ventas\n"
+                         "¿que quieres hacer?")
     return "1.buscar productos\n" \
-           "2.agragar productos y sacarlos del mercado\n" \
+           "2.agregar productos y sacarlos del mercado\n" \
            "3.rellenar el stokc de los productos\n" \
            "4.reventa de productos\n" \
            "5.cambiar el precio de un producto\n" \
-           "6.buscar informacion en la web"
+           "6.buscar informacion en la web\n" \
+           "7.ver cajas de heramientas"
 
 
 def servis():
-    print("llegamos a la zona del servis\n"
-          "¿que quieres hacer?")
+    print(Fore.BLACK + "llegamos a la zona del servis\n"
+                       "¿que quieres hacer?")
     return "1.chapista\n" \
            "2.pintura"
 
 
 def control_de_empleados():
-    print("chequeamos a los empleados\n"
-          "¿que quieres hacer?")
+    print(Fore.BLUE + "chequeamos a los empleados\n"
+                      "¿que quieres hacer?")
     return "1.nombre de empleados + profecion \n" \
            "2.contratar o despedir empleados \n" \
            "3.horario de trabajo (entraday salida) \n" \
@@ -50,8 +54,8 @@ def control_de_empleados():
 
 
 def gestionar_autos_en_espera():
-    print("llegamos a la zona del almacen de autos\n"
-          "¿que quieres hacer?")
+    print(Fore.GREEN + "llegamos a la zona del almacen de autos\n"
+                       "¿que quieres hacer?")
     return "1.meter autos en estacionamiento\n" \
            "2.meter autos en taller\n" \
            "3.meter autos en el servis\n" \
@@ -60,13 +64,13 @@ def gestionar_autos_en_espera():
 
 
 def chequeo_de_autos_antes_de_la_entrega():
-    print("seleccionar el auto para el control")
+    print(Fore.LIGHTBLUE_EX + "seleccionar el auto para el control")
     return "1.retirrar autos del taller\n" \
            "2.retirar autos del servis"
 
 
 def mostrar_lista_de_veiculos():
-    print("de que zona deseas ver los veiculos")
+    print(Fore.LIGHTGREEN_EX + "de que zona deseas ver los veiculos")
     return "1.estacionamiento\n" \
            "2.taller\n" \
            "3.servis"
