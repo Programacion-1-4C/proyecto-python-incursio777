@@ -32,12 +32,12 @@ def taller_mecanico():
     gnancia_por_hora = 6.4
     ganancia_por_min = 0.1
     # variabels de la eleccion 5
-    autos_en_estacionamiento = []
+    autos_en_estacionamiento = ["AAA111"]
     autos_en_taller = ["AA111BA"]
     autos_en_servis = ["BB123AA"]
-    espacio_de_estacionamiento = 10
-    espacio_de_taller = 3
-    espacio_de_servis = 5
+    espacio_de_estacionamiento = 9
+    espacio_de_taller = 4
+    espacio_de_servis = 4
     autos_trabajados = []
     autos_trabajados_servis = []
     # todo lo que este en esta linea sera solo de almacenamiento de informacion
@@ -74,6 +74,7 @@ def taller_mecanico():
                     print("auto no esncontrado")
 
                 if eleccion_1_1 != -1:
+                    objeto = False
                     contador = 0
                     contador_2 = len(productos)
                     while contador_2 > 0:
@@ -117,6 +118,8 @@ def taller_mecanico():
                     else:
                         print("el objeto", objeto_2, "no se encuentra en la cadana o en stock\n"
                                                      "nos es imposible hacer el recambio ahora")
+                else:
+                    pass
 
                 salida = input("algo mas (si/no)\n"
                                ">>>")
@@ -496,8 +499,8 @@ def taller_mecanico():
                         v4 -= 1
                         v4_2 += 1
                 elif elecion_4_1 == 4:  # pago por hs trabajadas
-                    print(
-                        "para no molestar a quienes realizan una actividad solo contaremos con los empleados desocupados")
+                    print("para no molestar a quienes realizan una actividad solo contaremos con los empleados "
+                          "desocupados")
                     v4 = len(empleados)
                     v4_2 = 0
                     while v4 > 0:
@@ -759,7 +762,7 @@ def taller_mecanico():
         elif eleccion_1 == 8:
             print(Fore.RED + "entendido\n"
                              "finalizando la secion")
-            for i in tqdm(range(10)):
+            for _ in tqdm(range(10)):
                 sleep(1)
             break
 

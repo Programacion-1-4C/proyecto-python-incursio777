@@ -32,8 +32,8 @@ gnancia_por_hora = 6.4
 ganancia_por_min = 0.1
 # variabels de la eleccion 5
 autos_en_estacionamiento = []
-autos_en_taller = ["AA111BA"]
-autos_en_servis = ["BB123AA"]
+autos_en_taller = ["AA111BA", "BB123AA"]
+autos_en_servis = []
 espacio_de_estacionamiento = 10
 espacio_de_taller = 3
 espacio_de_servis = 5
